@@ -1,0 +1,34 @@
+{% extends 'quizz/base.html' %}
+{% block title %}Accueil{% endblock %}
+{% block contains %}
+		<section class="container">
+			
+			<section class="row" style="margin-top: 100px;">
+				
+				<div class="col-md-12">
+
+					<div class="panel panel-info">
+
+						<div class="panel-heading">
+							{% block text %}{% endblock %}
+						</div>
+
+						<div class="panel-body btn-group btn-group-justified">
+
+							<h3>{% block help %}{% endblock %}</h3>
+
+							{% block form %}{% endblock %}
+
+						</div>
+
+						{% block comments %}
+						{% endblock %}
+
+					</div>
+
+				</div>
+
+			</section>
+
+		</section>
+{% endblock %}

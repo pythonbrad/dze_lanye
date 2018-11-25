@@ -1,0 +1,70 @@
+{% extends 'quizz/base.html' %}
+{% block title %}Account{% endblock %}
+{% block contains %}
+		
+		<section class="container">
+			
+			<section class="row" style="margin-top: 100px;">
+				
+				<div class="col-md-12">
+
+					<div class="panel panel-info">
+
+						<div class="panel-heading">
+							{% block text %}Information{% endblock %}
+						</div>
+
+						<div class="panel-body btn-group btn-group-justified">
+
+							<table class="table">
+								{% block help %}
+									<tr>
+										<td>Nom d'utilisateur</td>
+										<td>{{ user.username }}</td>
+									</tr>
+									{% if request.user == user %}
+										<tr>
+											<td>Email</td>
+											<td>{{ user.email }}</td>
+										</tr>
+									{% endif %}
+									<tr>
+										<td><a href="{% url 'ranking' %}">Rang</a></td>
+										<td><a href="{% url 'ranking' %}">Voir</a></td>
+									</tr>
+									<tr>
+										<td>Dernière connexion</td>
+										<td>{{ user.last_login }}</td>
+									</tr>
+									<tr>
+										<td>Date d'adhésion</td>
+										<td>{{ user.date_joined }}</td>
+									</tr>
+									{% if request.user == user %}
+										<tr>
+											<td>Langue actuelle</td>
+											<td>
+												<form class="form" method="GET" action="{% url 'setlanguage' %}">
+													<select class="form-control" name="lang_id">
+														{% for lang in languages %}
+															<option value="{{ lang.id }}" {% if lang == data_user.language %}selected{% endif %}>{{ lang.name }}</option>
+														{% endfor %}
+													</select>
+													<input class="btn btn-warning btn-block" type="submit">
+												</form>
+											</td>
+										</tr>
+									{% endif %}
+								{% endblock %}
+							</table>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</section>
+
+		</section>
+{% endblock %}

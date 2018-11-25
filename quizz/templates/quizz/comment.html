@@ -1,0 +1,35 @@
+{% extends 'quizz/base2.html' %}
+{% block title %}Comment{% endblock %}
+{% block text %}{{ question.question_text }}{% endblock %}
+{% block help %}Faire un commentaire{% endblock %}
+{% block comments %}
+	<div class="panel-footer">
+
+		<form class="form form-brad" method="POST" action="{% url 'comment' question.id  %}">
+			{% csrf_token %}
+			
+			<input type="hidden" name="question_id" value="{{ question.id }}">
+
+			{{form.as_p}}
+			
+			<button type="submit" class="btn btn-warning">Commenter</button>
+
+		</form><br/>
+
+		<form class="form" method="GET" action="{% url 'questions' %}">
+				
+			<input type="submit" value='Annuler' class="btn btn-warning">
+
+		</form>
+
+		<br/>
+		<h4>Commentaires récents:</h4>
+		{% for comment in question.comment_set.all %}
+			{% if comment.is_visible %}
+				<h4><a href="{% url 'account' comment.user.id %}">{{ comment.user.username }}</a> le ({{ comment.pub_date }}): {{ comment.comment_text }}</h4>
+			{% endif %}
+		{% empty %}
+			<p>Pas de commentaire pour le moment</p>
+		{% endfor %}
+	</div>
+{% endblock %}

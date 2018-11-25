@@ -1,0 +1,59 @@
+{% extends 'quizz/base.html' %}
+{% block title %}Mala{% endblock %}
+{% block contains %}
+		<section class="container">
+
+			<section class="row" style="margin-top: 100px;">
+
+				<div class="col-md-12">
+
+					<div class="panel panel-info">
+
+						<div class="panel-heading">
+							{% block text %}APP MALA{% endblock %}
+						</div>
+
+						<div class="panel-body btn-group btn-group-justified">
+
+							<h3>
+								{% block help %}
+									Trouve un mot francais au dialect de ton choix.
+									Exemple: enfant, eau, boire, manger
+								{% endblock %}</h3>
+
+							{% block form %}
+								<form class="form" method="POST">
+									{% csrf_token  %}
+									<input class="form-control" type="text" name="word" maxlength="20">
+									<input type="submit" class="form-control btn-warning" value=Chercher'>
+								</form>
+							{% endblock %}
+
+							{% if data %}
+								<h3>Differentes significations du mot {{ word }}</h3>
+								<table class="table">
+									{% for q in data %}
+										<tr>
+											<th>{{ q.theme.language }}</th>
+											{% for r in q.answer_set.all %}
+												<td>{{ r }}</td>
+											{% endfor %}
+										</tr>
+									{% endfor %}
+								</table>
+							{% else %}
+								<h3 style="color: red;">J'ai rien trouver</h3>
+							{% endif %}
+						</div>
+
+						{% block comments %}
+						{% endblock %}
+
+					</div>
+
+				</div>
+
+			</section>
+
+		</section>
+{% endblock %}

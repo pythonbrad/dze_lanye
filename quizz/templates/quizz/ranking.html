@@ -1,0 +1,54 @@
+{% extends 'quizz/base.html' %}
+{% block title %}Classement{% endblock %}
+{% block contains %}
+		<section class="container">
+			
+			<section class="row" style="margin-top: 100px;">
+				
+				<div class="col-md-12">
+
+					<div class="panel panel-info">
+
+						<div class="panel-heading">
+							{% block text %}Classement{% endblock %}
+						</div>
+
+						<div class="panel-body btn-group btn-group-justified">
+
+							<table class="table">
+								{% block help %}
+									<tr>
+										<th>Nom d'utilisateur</th>
+										<th>Score</th>
+										<th>Combien de thèmes ont été passé?</th>
+										<th>Combien de thèmes ont été validé?</th>
+										<th>Rang</th>
+										<th>Date d'adhésion</th>
+									</tr>
+									{% for data_user in data_users %}
+										<tr>
+											{% if request.user == data_user.user %}
+												<td><b>Moi</b></td>
+											{% else %}
+												<td><a href="{% url 'account' data_user.user.id %}">{{ data_user.user.username }}</a></td>
+											{% endif %}
+											<td>{{ data_user.score }}</td>
+											<td>{{ data_user.theme_passed.split|length }}</td>
+											<td>{{ data_user.theme_valided.split|length }}</td>
+											<td>{{ forloop.counter }}</td>
+											<td>{{ data_user.user.date_joined }}</td>
+										</tr>
+									{% endfor %}
+								{% endblock %}
+							</table>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</section>
+
+		</section>
+{% endblock %}

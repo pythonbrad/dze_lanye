@@ -1,0 +1,53 @@
+{% extends 'quizz/base.html' %}
+{% block title %}A propos{% endblock %}
+{% block contains %}
+		<section class="container">
+			
+			<section class="row" style="margin-top: 100px;">
+				
+				<div class="col-md-12">
+
+					<div class="panel panel-info">
+
+						<div class="panel-heading">
+							{% block text %}Personnel{% endblock %}
+						</div>
+
+						<div class="panel-body btn-group btn-group-justified">
+
+							<table class="table">
+								{% block help %}
+									<tr>
+										<th></th>
+										<th>Pseudo</th>
+										<th>Email</th>
+									</tr>
+									<tr>
+										<th>Développer par \ Designer par</th>
+										<td>pythonbrad</td>
+										<td>fomegnemeudje@outlook.com</td>
+									</tr>
+									<tr>
+										<th>Designer par</th>
+										<td>predator</td>
+										<td>foumbi45@gmail.com</td>
+									</tr>
+								{% endblock %}
+							</table>
+
+						<h3>Spécial remerciement:</h3>
+						<ul>Predator (pour le design)</ul>
+						<ul>Alienx (pour certains conseils)</ul>
+						<ul>Les programmeurs (Notre groupe Whatsapp)</ul>
+						<ul><a href="https://resulam.com/fr/">Resulam</a></ul>
+
+						</div>
+
+					</div>
+
+				</div>
+
+			</section>
+
+		</section>
+{% endblock %}

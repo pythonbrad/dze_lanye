@@ -1,0 +1,30 @@
+{% extends 'quizz/base2.html' %}
+{% block title %}Choisir un thème{% endblock %}
+{% block text %}{{ data_user.language|upper }}{% endblock %}
+{% block help %}Choisir un thème{% endblock %}
+{% block form %}
+
+	{% if error %}
+		<h3 style="color: red;">{{ error }}</h3>
+	{% endif %}
+
+	{% for theme in themes %}
+		<form class="form" method="POST" action="{% url 'choose_theme' %}">
+
+			{% csrf_token %}
+
+			<div class="btn-group btn-group-justified" role="group" aria-label="...">
+				
+				<input type="submit" style="{% if not theme.unlock %}background-color: grey;{% elif theme.is_completed %}background-color: orange;{% elif theme.nb_done >= 1 %}background-color: green;{% endif %}" class="btn-lg btn-block btn-info" value="{{ theme.name }}" />
+				
+				<input type="hidden" name="theme_id" value="{{ theme.id }}">
+			
+			</div>
+		
+		</form>
+
+	{% empty %}
+		<h3>Pas de question pour le moment</h3>
+	{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'quizz/base2.html' %}
+{% block title %}Félicitation{% endblock %}
+{% block help %}
+{% if bonus %}
+<font color='green'>Très bien, tu as répondu sans erreur, +{{ bonus }}</font><br/>
+{% endif %}
+Tu passes le thème `{{ theme.name }}`<br/>
+Continue comme ça.
+{% endblock %}
+{% block form %}
+	<form class="form" method="GET" action="{% url 'choose_theme' %}">
+		<div class="btn-group btn-group-justified" role="group" aria-label="...">
+			<input type="submit" style="background-color: green;" class="btn-lg btn-block btn-info" value='Suivant' />
+		</div>
+	</form>
+{% endblock %}

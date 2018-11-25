@@ -1,0 +1,57 @@
+{% extends 'quizz/base.html' %}
+{% block title %}S'inscrire{% endblock %}
+{% block contains %}
+	<section class="container">
+		
+		<section class="row">
+			
+			<div class="col-md-12">
+				
+				<div class="panel panel-info">
+					
+					<div class="panel-heading">
+						
+						<h3 class="text-center">Page d'inscription</h3>
+
+					</div>
+
+					<div class="panel-body">
+						
+						<form class="form form-brad" method="POST" action="{% url 'signin' %}">
+							{% csrf_token  %}
+							
+							{{ form.as_p }}
+
+							<b>Choisi une langue:</b>
+							<i>En cas d'exitation, vous pourriez changer cette langue plus tard</i>
+							<select name="language_id" class="form-control">
+								{% for language in languages %}
+									<option value="{{ language.id }}">{{ language.name }}</option>
+								{% endfor %}
+							</select><br/>
+
+							<div class="form-group">
+								
+								<a href="{% url 'login' %}">J'ai un compte</a>
+								
+							</div>
+
+							<div class="form-group">
+								
+								<button type="submit" class="btn btn-success form-control">S'inscrire</button>
+								
+							</div>
+
+						</form>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</section>
+
+	</section>
+{% endblock %}
+{% block logout %}{% endblock %}

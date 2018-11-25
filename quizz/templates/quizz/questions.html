@@ -1,0 +1,52 @@
+{% extends 'quizz/base2.html' %}
+{% block title %}Choisissez la réponse juste{% endblock %}
+{% block text %}{{ question.question_text|capfirst }}{% endblock %}
+{% block help %}Choisissez la réponse juste{% endblock %}
+
+{% block form %}
+	{% if not passed %}
+		{% for choice in choices %}
+			<form class="form" method="POST" action="{% url 'questions' %}">
+
+				{% csrf_token %}
+
+				<div class="btn-group btn-group-justified" role="group" aria-label="...">
+
+					<input type="submit" class="btn-lg btn-block btn-info" value="{{ choice.choice_text }}" />
+
+					<input type="hidden" name="choice_id" value="{{ choice.id }}">
+
+				</div>
+
+			</form>
+		{% empty %}
+			<h3>Pas de choix pour le moment</h3>
+		{% endfor %}
+	{% else %}
+		<form class="form" method="GET" action="{% url 'questions' %}">
+
+			<div class="btn-group btn-group-justified" role="group" aria-label="...">
+
+				<input type="submit" class="btn-lg btn-block btn-info" value='Suivant' />
+
+			</div>
+
+		</form>
+	{% endif %}
+	{% if failure == True %}
+		<h3 style="color: red">Tu as raté c'est `{{ question.answer_set.all|first }}`</h3>
+	{% elif failure == False %}
+		<h3 style="color: green">Bon</h3>
+	{% endif %}
+{% endblock %}
+{% block comments %}
+	{% if can_comment %}
+		<div class="panel-footer">
+
+				<form class="form" action="{% url 'comment' question.id %}">
+					<input class="btn btn-warning" type="submit" value='Commenter'>
+				</form>
+
+		</div>
+	{% endif %}
+{% endblock %}
