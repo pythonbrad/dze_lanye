@@ -19,6 +19,7 @@ En fouillant mon onedrive, je suis tomber sur mon vieux projet de learn_bamileke
 *Je creerais un fichier tests.py*
 
 #Deployement
+Peut prendre 10min
 ```
 git clone <url>
 cd dze_lanye
@@ -26,8 +27,9 @@ manage.py makemigrations
 manage.py migrate
 manage.py shell
 from insert_in_database_django_datalang import run
-from .models import *
+from quizz.models import *
 run(Language ,Theme, Question, Answer, Choice)
+all
 exit()
 manage.py runserver
 ```
