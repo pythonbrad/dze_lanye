@@ -27,8 +27,6 @@ manage.py makemigrations
 manage.py migrate
 manage.py shell
 from insert_in_database_django_datalang import run
-
-http://pythonbrad.pythonanywhere.com
 from quizz.models import *
 run(Language ,Theme, Question, Answer, Choice)
 all
@@ -36,3 +34,4 @@ exit()
 manage.py runserver
 ```
 And wait, ca peut prende ~10min
+http://pythonbrad.pythonanywhere.com
