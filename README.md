@@ -20,6 +20,7 @@ En fouillant mon onedrive, je suis tomber sur mon vieux projet de learn_bamileke
 
 #Deployement
 Peut prendre 10min
+copy and past it
 ```
 git clone <url>
 cd dze_lanye
