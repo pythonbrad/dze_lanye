@@ -1,5 +1,5 @@
 import random
-from word import dict_word
+from data_lang.word import dict_word
 
 #faire le multi choix avec les mot qui reveienne plusieur fois
 
@@ -51,4 +51,4 @@ def run(Language ,Theme, Question, Answer, Choice):
 					Choice.objects.create(choice_text=answer_text,question=question)
 				for _i in range(5):
 					Choice.objects.create(choice_text=random.choice(dict_word[lang]['mlang']),question=question)
-
+	print('Finish')				
