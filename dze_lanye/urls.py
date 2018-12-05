@@ -23,4 +23,5 @@ urlpatterns = [
     path('quizz/', include('quizz.urls')),
     path('conj/', include('conj.urls')),
     path('mala/', include('mala.urls')),
+    path('maintenance-mode/', include('maintenance_mode.urls')),
 ]

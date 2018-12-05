@@ -34,6 +34,15 @@
 					<a class="navbar-brand" style="color: red;" href="{% url 'about' %}">
 						VERSION TEST
 					</a>
+					{% if request.user.is_superuser %}
+						<a class="navbar-brand" style="color: orange;">
+						{% if maintenance_mode %}
+							MODE MAINTENANCE ACTIVED
+						{% else %}
+							MODE MAINTENANCE DESACTIVED
+						{% endif %}
+						</a>
+					{% endif %}
 
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
 
