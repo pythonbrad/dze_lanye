@@ -1,11 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.utils.translation import activate
 from quizz.models import Question
 
 # Create your views here.
 def index_view(request):
-	activate('en' if not 'language' in request.session else request.session['language'])
 	if 'word' in request.POST:
 		word= request.POST['word']
 		data = []

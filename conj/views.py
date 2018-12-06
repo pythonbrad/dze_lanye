@@ -1,13 +1,11 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.http import HttpResponse
-from django.utils.translation import activate
 from .addons import app_conj
 import random
 
 # Create your views here.
 def index(request):
-	activate('en' if not 'language' in request.session else request.session['language'])
 	if not 'verb' in request.GET:
 		verb = [i for i in app_conj.data_verbe_translate]
 		verb = random.choice(verb)
