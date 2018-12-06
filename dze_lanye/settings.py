@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'quizz.apps.QuizzConfig',
     'conj.apps.ConjConfig',
-    'django_social_share',
     'mala.apps.MalaConfig',
     'maintenance_mode',
 ]

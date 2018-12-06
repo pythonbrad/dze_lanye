@@ -1,5 +1,4 @@
 {% extends 'quizz/base.html' %}
-{% load social_share %}
 {% load dictkey %}
 {% block title %}{{ title }}{% endblock %}
 {% block contains %}
@@ -34,12 +33,6 @@
 										</div>
 									</form>
 								{% endblock %}
-								{% post_to_facebook url "Post to Facebook!" %}
-								{% post_to_twitter title url "Post to Twitter" %}
-								{% post_to_gplus url "Post to Google+!" %}
-								{% post_to_linkedin title url "Post to LinkedIn" %}
-								{% send_email title url "Share via email" %}
-								{% post_to_reddit title url %}
 								<section class="row">
 									<h3>{{ title }}</h3>
 									{% for i in conjs %}
