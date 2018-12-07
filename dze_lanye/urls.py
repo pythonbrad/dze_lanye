@@ -21,7 +21,7 @@ urlpatterns = [
     path('', RedirectView.as_view(url='/quizz')),
     path('admin/', admin.site.urls),
     path('quizz/', include('quizz.urls')),
-    path('conj/', include('conj.urls')),
+    path('conj/', include('conj_nufi.urls')),
     path('mala/', include('mala.urls')),
     path('maintenance-mode/', include('maintenance_mode.urls')),
     path('blog/', include('brad_blog.blog.urls')),

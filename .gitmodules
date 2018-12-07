@@ -4,3 +4,6 @@
 [submodule "brad_blog"]
 	path = brad_blog
 	url = https://github.com/pythonbrad/brad_blog.git
+[submodule "conj_nufi"]
+	path = conj_nufi
+	url = https://github.com/pythonbrad/conj_nufi.git

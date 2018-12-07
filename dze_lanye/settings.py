@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'quizz.apps.QuizzConfig',
-    'conj.apps.ConjConfig',
+    'conj_nufi.apps.ConjNufiConfig',
     'mala.apps.MalaConfig',
     'maintenance_mode',
     'brad_blog.blog',
