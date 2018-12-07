@@ -4,8 +4,8 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
 from django.db.models import Q
 from django.http import HttpResponse
-from .models import Question, Choice, Theme, Comment, DataUser, Answer, Language
-from .forms import SigninForm, LoginForm, CommentForm
+from .models import Question, Choice, Theme, Remark, DataUser, Answer, Language
+from .forms import SigninForm, LoginForm, RemarkForm
 from .addons import *
 
 # Create your views here.
@@ -49,7 +49,7 @@ def choose_theme_view(request):
 def questions_view(request):
 	user = request.user
 	data_user = get_object_or_404(DataUser, user=user)
-	can_comment = ''
+	can_remark = ''
 	if not 'questions_id' in request.session:
 		return redirect('choose_theme')
 	elif not request.session['questions_id']:
@@ -69,7 +69,7 @@ def questions_view(request):
 		if req:
 			choice = get_object_or_404(Choice, id=req['choice_id'])
 			failure = True
-			can_comment = True
+			can_remark = True
 			passed = True
 			if question.answer_set.filter(answer_text=choice.choice_text).exists():
 				questions_id = questions_id[1:]
@@ -86,19 +86,19 @@ def questions_view(request):
 		return render(request, 'quizz/questions.html', locals())
 
 @login_required(login_url='login')
-def comment_view(request, question_id):
+def remark_view(request, question_id):
 	user = request.user
 	req = request.POST
 	if req:
-		form = CommentForm(req)
+		form = RemarkForm(req)
 		if form.is_valid():
 			question = get_object_or_404(Question, id=question_id)
-			comment_text = form.cleaned_data['comment_text']
-			Comment.objects.create(question=question, user=user, comment_text=comment_text)
+			remark_text = form.cleaned_data['remark_text']
+			Remark.objects.create(question=question, user=user, remark_text=remark_text)
 			return redirect('questions')
-	form = CommentForm()
+	form = RemarkForm()
 	question = get_object_or_404(Question ,id=question_id)
-	return render(request, 'quizz/comment.html', locals())
+	return render(request, 'quizz/remark.html', locals())
 
 @login_required(login_url='login')
 def logout_view(request):

@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Comment
+from .models import Remark
 from django.utils import timezone
 
 class SigninForm(forms.ModelForm):
@@ -25,7 +25,7 @@ class LoginForm(forms.Form):
 	username_or_email = forms.CharField()
 	password = forms.CharField(widget=forms.PasswordInput())
 
-class CommentForm(forms.ModelForm):
+class RemarkForm(forms.ModelForm):
 	class Meta:
-		model = Comment
-		fields = ['comment_text']
+		model = Remark
+		fields = ['remark_text']

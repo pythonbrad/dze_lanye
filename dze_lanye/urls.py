@@ -24,4 +24,5 @@ urlpatterns = [
     path('conj/', include('conj.urls')),
     path('mala/', include('mala.urls')),
     path('maintenance-mode/', include('maintenance_mode.urls')),
+    path('blog/', include('brad_blog.blog.urls')),
 ]

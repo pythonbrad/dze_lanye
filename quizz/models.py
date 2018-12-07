@@ -64,15 +64,15 @@ class DataUser(models.Model):
 	def __str__(self):
 		return self.user.username
 
-class Comment(models.Model):
+class Remark(models.Model):
 	user = models.ForeignKey(User, on_delete=models.CASCADE)
 	question = models.ForeignKey(Question, on_delete=models.CASCADE)
-	comment_text = models.CharField(max_length=100)
+	remark_text = models.CharField(max_length=100)
 	pub_date = models.DateTimeField(default=timezone.now, verbose_name='Publication date')
 	is_visible = models.BooleanField(default=1)
 
 	def __str__(self):
-		return self.comment_text
+		return self.remark_text
 	def is_recent(self):
 		return self.pub_date >= timezone.now() - datetime.timedelta(days=1) <= timezone.now()
 	is_recent.short_description = 'Is recent?'

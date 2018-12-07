@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Question, Choice, Theme, Comment, DataUser, Answer, Language
+from .models import Question, Choice, Theme, Remark, DataUser, Answer, Language
 
 class ChoiceInline(admin.StackedInline):
 	model = Choice
@@ -33,11 +33,11 @@ class ThemeAdmin(admin.ModelAdmin):
 	list_filter = ['language']
 	search_fields = ['name']
 
-class CommentAdmin(admin.ModelAdmin):
-	list_display = ['user', 'question', 'comment_text', 'pub_date', 'is_recent', 'is_visible', 'get_language']
+class RemarkAdmin(admin.ModelAdmin):
+	list_display = ['user', 'question', 'remark_text', 'pub_date', 'is_recent', 'is_visible', 'get_language']
 	list_filter = ['pub_date']
 	exclude = ['pub_date']
-	search_fields = ['comment_text', 'question__question_text']
+	search_fields = ['remark_text', 'question__question_text']
 
 	def get_language(self, obj):
 		return obj.question.theme.language
@@ -58,6 +58,6 @@ class DataUserAdmin(admin.ModelAdmin):
 admin.site.register(Theme, ThemeAdmin)
 admin.site.register(Question, QuestionAdmin)
 admin.site.register(Answer, AnswerAdmin)
-admin.site.register(Comment, CommentAdmin)
+admin.site.register(Remark, RemarkAdmin)
 admin.site.register(DataUser, DataUserAdmin)
 admin.site.register(Language)

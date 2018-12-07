@@ -39,11 +39,11 @@
 		<h3 style="color: green">Bon</h3>
 	{% endif %}
 {% endblock %}
-{% block comments %}
-	{% if can_comment %}
+{% block remarks %}
+	{% if can_remark %}
 		<div class="panel-footer">
 
-				<form class="form" action="{% url 'comment' question.id %}">
+				<form class="form" action="{% url 'remark' question.id %}">
 					<input class="btn btn-warning" type="submit" value='Commenter'>
 				</form>
 

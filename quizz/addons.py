@@ -1,5 +1,4 @@
 import random
-from django.conf import settings
 
 def theme_full(data, theme, full=True):
 	#it's id

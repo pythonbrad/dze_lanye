@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'conj.apps.ConjConfig',
     'mala.apps.MalaConfig',
     'maintenance_mode',
+    'brad_blog.blog',
 ]
 
 MIDDLEWARE = [
