@@ -2,3 +2,4 @@
 __pycache__
 db.sqlite3
 maintenance_mode_state.txt
+settings.py 
