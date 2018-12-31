@@ -87,10 +87,10 @@ WSGI_APPLICATION = 'dze_lanye.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'pythonbrad$default',
-        'USER': 'pythonbrad',
-        'PASSWORD': 'constructor',
-        'HOST': 'pythonbrad.mysql.pythonanywhere-services.com',
+        'NAME': <your_database_name>,
+        'USER': <your_user_name>,
+        'PASSWORD': <your_password>,
+        'HOST': <your_databse_url>',
         'OPTIONS':{
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
         },
