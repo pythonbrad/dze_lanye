@@ -22,8 +22,11 @@ En fouillant mon onedrive, je suis tomber sur mon vieux projet de learn_bamileke
 Peut prendre 10min
 #copy and past it
 ```
-git clone --recursive https://github.com/pythonbrad/dze_lanye.git
+git clone https://github.com/pythonbrad/dze_lanye.git
 cd dze_lanye
+git clone http://github.com/pythonbrad/brad_blog.git
+git clone http://github.com/pythonbrad/data_lang.git
+git clone http://github.com/pythonbrad/conj_nufi.git
 manage.py makemigrations
 manage.py migrate
 manage.py shell

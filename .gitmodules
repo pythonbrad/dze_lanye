@@ -1,9 +1,0 @@
-[submodule "data_lang"]
-	path = data_lang
-	url = https://github.com/pythonbrad/data_lang
-[submodule "brad_blog"]
-	path = brad_blog
-	url = https://github.com/pythonbrad/brad_blog.git
-[submodule "conj_nufi"]
-	path = conj_nufi
-	url = https://github.com/pythonbrad/conj_nufi.git
