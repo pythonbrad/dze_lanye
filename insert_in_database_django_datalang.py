@@ -1,54 +1,64 @@
-import random
+from quizz.models import *
 from data_lang.word import dict_word
+import random
+from django.contrib.auth.models import User
 
-#faire le multi choix avec les mot qui reveienne plusieur fois
-
-#a utiliser dans django shell
 def run(Language ,Theme, Question, Answer, Choice):
-	theme_id = 0
-	theme_name = 0
-	old_theme_id = -1
-	lang = input('language: ')
-	if lang == 'all':
-		_lang = [i for i in dict_word]
-	else:
-		if lang in dict_word:
-			_lang = [lang]
-		else:
-			raise Exception("lang %s not found"%lang)
-	for lang in _lang:
+	language = input('Language: ').split(',')
+	if not language or language == ['all']:
+		language = [i for i in dict_word]
+	print(language, 'to inserted')
+	for lang in language:
+		i = 0
 		print(lang)
-		if Language.objects.filter(name=lang):
-			print(lang+' '+'already exists')
-		else:
-			language = Language(name=lang)
-			language.save()
-			is_first_theme = 1
-			theme_name = 1
-			for key, value in dict_word[lang]['lang'].items():
-				theme_id += 1
-				if int(theme_id/10) != old_theme_id:
-					old_theme_id = int(theme_id/10)
-					print('  ', theme_name)
-					theme = Theme(
-						name='%s word %s'%(lang, theme_name),
-						required='%s_%s'%(lang, old_theme_id) if not is_first_theme else '',
-						tag='%s_%s'%(lang, old_theme_id+1)
-					)
-					is_first_theme = 0
-					theme.language=language
-					theme.save()
-					theme_name += 1
-				question = Question(question_text=value,theme=theme)
-				question.save()
-				answers = [dict_word[lang]['mlang'][key]]
-				for _key, _value in dict_word[lang]['lang'].items():
-					answer_text = dict_word[lang]['mlang'][_key]
-					if _value == value and not answer_text in answers:
-						answers.append(answer_text)
-				for answer_text in answers:
-					Answer.objects.create(answer_text=answer_text,question=question)
-					Choice.objects.create(choice_text=answer_text,question=question)
-				for _i in range(5):
-					Choice.objects.create(choice_text=random.choice(dict_word[lang]['mlang']),question=question)
-	print('Finish')				
+		if not Language.objects.filter(name=lang):
+			_lang = Language(name=lang)
+			_lang.save()
+			for theme in dict_word[lang]:
+				print('  theme')
+				_theme = Theme()
+				_theme.name = theme
+				_theme.language = _lang
+				_theme_has_formated = "{}_theme_%s".format(lang)
+				_theme.tag = _theme_has_formated%i
+				#if i != 0:
+				#	_theme.required = _theme_has_formated%(i-1)
+				_theme.save()
+				i += 1
+				for word_id in dict_word[lang][theme]['lang']:
+					print('    question')
+					question = Question()
+					question.question_text = dict_word[lang][theme]['lang'][word_id]
+					question.theme = _theme
+					question.save()
+					_temp = []
+					for _word_id in dict_word[lang][theme]['mlang']:
+						_word_id_lang = dict_word[lang][theme]['lang'][_word_id]
+						_answer = dict_word[lang][theme]['mlang'][_word_id]
+						if question.question_text == _word_id_lang:
+							print('      answer')
+							answer = Answer()
+							answer.answer_text = _answer
+							answer.question = question
+							answer.save()
+							choice = Choice()
+							choice.choice_text = _answer
+							choice.question = question
+							choice.save()
+						_temp.append(_answer)
+					for _i in range(5):
+						print('        choice')
+						_choice = random.choice(_temp)
+						if not Choice.objects.filter(choice_text=_choice, question=question):
+							choice = Choice()
+							choice.choice_text = _choice
+							choice.question = question
+							choice.save()
+
+
+user = User(username='admin', password='adminroottoor')
+user.is_staff = True
+user.is_superuser = True
+user.save()
+
+print('superuser created wth username <admin> and password <adminroottoor>')

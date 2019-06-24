@@ -37,5 +37,5 @@ all
 exit()
 manage.py runserver
 ```
-And wait, ca peut prende ~10min
+And wait, ca peut prende du temps avec sqlite3
 http://pythonbrad.pythonanywhere.com

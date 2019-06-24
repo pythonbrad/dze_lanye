@@ -5,6 +5,7 @@
 
 {% block form %}
 	{% if not passed %}
+		<p>Reste: {{ questions_id|length }}/{{ question.theme.question_set.count }}</p>
 		{% for choice in choices %}
 			<form class="form" method="POST" action="{% url 'questions' %}">
 

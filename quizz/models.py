@@ -12,7 +12,7 @@ class Language(models.Model):
 		return self.name
 
 class Theme(models.Model):
-	name = models.CharField(max_length=50, unique=True)
+	name = models.CharField(max_length=50)
 	language = models.ForeignKey(Language, on_delete=models.CASCADE)
 	tag = models.CharField(max_length=20, unique=True)
 	level = models.PositiveIntegerField(default=0)
@@ -23,8 +23,7 @@ class Theme(models.Model):
 		return self.name
 	def is_unlock(self, user):
 		themes_passed = DataUser.objects.get(user=user).theme_passed.split()
-		themes_requis = Theme.objects.get(name=self.name).required.split()
-		for i in themes_requis:
+		for i in self.required.split():
 			if i != '':
 				if not i in themes_passed:
 					return False

@@ -15,7 +15,7 @@
 
 			<div class="btn-group btn-group-justified" role="group" aria-label="...">
 				
-				<input type="submit" style="{% if not theme.unlock %}background-color: grey;{% elif theme.is_completed %}background-color: orange;{% elif theme.nb_done >= 1 %}background-color: green;{% endif %}" class="btn-lg btn-block btn-info" value="{{ theme.name }}" />
+				<input type="submit" style="{% if not theme.unlock %}background-color: grey;{% elif theme.is_completed %}background-color: orange;{% elif theme.nb_done >= 1 %}background-color: green;{% endif %}" class="btn-lg btn-block btn-info" value="{{ theme.name }} ({{ theme.question_set.count }} mots)" />
 				
 				<input type="hidden" name="theme_id" value="{{ theme.id }}">
 			
@@ -24,7 +24,7 @@
 		</form>
 
 	{% empty %}
-		<h3>Pas de question pour le moment</h3>
+		<h3>Pas de theme pour le moment</h3>
 	{% endfor %}
 
 {% endblock %}

@@ -86,14 +86,8 @@ WSGI_APPLICATION = 'dze_lanye.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': <your_database_name>,
-        'USER': <your_user_name>,
-        'PASSWORD': <your_password>,
-        'HOST': <your_databse_url>',
-        'OPTIONS':{
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': "db.sqlite3",
     }
 }
 
