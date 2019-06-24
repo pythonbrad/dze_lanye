@@ -30,8 +30,7 @@ git clone http://github.com/pythonbrad/conj_nufi.git
 manage.py makemigrations
 manage.py migrate
 manage.py shell
-from insert_in_database_django_datalang import run
-from quizz.models import *
+from insert_in_database_django_datalang import *
 run(Language ,Theme, Question, Answer, Choice)
 all
 exit()
