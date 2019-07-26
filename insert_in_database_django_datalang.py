@@ -36,7 +36,6 @@ def run(Language ,Theme, Question, Answer, Choice):
 						_word_id_lang = dict_word[lang][theme]['lang'][_word_id]
 						_answer = dict_word[lang][theme]['mlang'][_word_id]
 						if question.question_text == _word_id_lang:
-							print('      answer')
 							answer = Answer()
 							answer.answer_text = _answer
 							answer.question = question
@@ -47,7 +46,6 @@ def run(Language ,Theme, Question, Answer, Choice):
 							choice.save()
 						_temp.append(_answer)
 					for _i in range(5):
-						print('        choice')
 						_choice = random.choice(_temp)
 						if not Choice.objects.filter(choice_text=_choice, question=question):
 							choice = Choice()
