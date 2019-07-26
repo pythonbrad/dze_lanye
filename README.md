@@ -24,7 +24,7 @@ Peut prendre 10min avec sqlite3
 ```
 git clone https://github.com/pythonbrad/dze_lanye.git
 cd dze_lanye
-pip install myvirtualenv
+pip install virtualenv
 mkvirtualenv myvirtualenv --python=/usr/bin/python3.6
 workon myvirtualenv
 pip install django==2.1
@@ -33,9 +33,9 @@ pip install pillow
 git clone http://github.com/pythonbrad/brad_blog.git
 git clone http://github.com/pythonbrad/data_lang.git
 git clone http://github.com/pythonbrad/conj_nufi.git
-manage.py makemigrations
-manage.py migrate
-manage.py shell
+python manage.py makemigrations
+python manage.py migrate
+python manage.py shell
 from insert_in_database_django_datalang import *
 run(Language ,Theme, Question, Answer, Choice)
 all
@@ -43,4 +43,4 @@ exit()
 manage.py runserver
 ```
 And wait, ca peut prende du temps avec sqlite3
-http://pythonbrad.pythonanywhere.com
+http://tutorbrad.pythonanywhere.com
