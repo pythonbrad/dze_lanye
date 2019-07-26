@@ -19,11 +19,17 @@ En fouillant mon onedrive, je suis tomber sur mon vieux projet de learn_bamileke
 *Je creerais un fichier tests.py*
 
 #Deployement
-Peut prendre 10min
+Peut prendre 10min avec sqlite3
 #copy and past it
 ```
 git clone https://github.com/pythonbrad/dze_lanye.git
 cd dze_lanye
+pip install myvirtualenv
+mkvirtualenv myvirtualenv --python=/usr/bin/python3.6
+workon myvirtualenv
+pip install django==2.1
+pip install mysqlclient
+pip install pillow
 git clone http://github.com/pythonbrad/brad_blog.git
 git clone http://github.com/pythonbrad/data_lang.git
 git clone http://github.com/pythonbrad/conj_nufi.git
