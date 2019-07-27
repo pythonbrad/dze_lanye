@@ -85,16 +85,7 @@ WSGI_APPLICATION = 'dze_lanye.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': "<username>$default",
-        'USER': '<username>',
-        'PASSWORD': '<password>',
-        'HOST': '<username>.mysql.pythonanywhere-services.com',
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        }
-    }
+    'default': {}
 }
 
 
