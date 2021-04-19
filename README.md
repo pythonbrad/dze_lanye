@@ -36,16 +36,16 @@ git clone http://github.com/pythonbrad/conj_nufi.git
 python manage.py makemigrations
 python manage.py migrate
 python manage.py shell
-'''
+```
 
-'''python
+```python
 from insert_in_database_django_datalang import *
 run(Language ,Theme, Question, Answer, Choice)
 all
 exit()
-'''
+```
 
-'''shell
+```shell
 manage.py runserver
 ```
 And wait, ca peut prende du temps avec sqlite3
