@@ -54,4 +54,4 @@ http://pythonbrad.pythonanywhere.com
 
 # Screenshot
 
-![Image](https://github.com/pythonbrad/dze_lanye/blob/master/scrren.png)
+![Image](https://github.com/pythonbrad/dze_lanye/blob/master/screen.png)
