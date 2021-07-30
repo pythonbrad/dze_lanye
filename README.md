@@ -50,3 +50,8 @@ manage.py runserver
 ```
 And wait, ca peut prende du temps avec sqlite3
 http://pythonbrad.pythonanywhere.com
+
+
+# Screenshot
+
+![Image](https://github.com/pythonbrad/dze_lanye/blob/master/scrren.png)
