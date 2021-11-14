@@ -49,7 +49,6 @@ exit()
 manage.py runserver
 ```
 And wait, ca peut prende du temps avec sqlite3
-http://pythonbrad.pythonanywhere.com
 
 
 # Screenshot
